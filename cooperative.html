@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Cooperatives</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js"></script>
+    <style>
+        .legend{
+            padding: 1em;
+            background: #fff;
+            line-height: 1.5em;
+        }
+        .legend i {
+            width: 5em;
+            float: left;
+        }
+
+    </style>
+</head>
+<body id="myPage">
+
+<div class="row">
+    <div class="col-xs-12">
+        <div id="map" style="width: 100%; height: 90vh;"></div>
+    </div>
+</div>
+
+
+<script>
+
+   
+
+    var map = new L.map('map').setView([0.0587668, 37.6445051],13);
+
+    //Adding basemaps
+    var basemaps = {
+        'OSM' : L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+
+        'Google Streets' : L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 15,
+            subdomains:['mt0','mt1','mt2','mt3']
+        }),
+
+        'Google Hybrid' : L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+            maxZoom: 15,
+            subdomains:['mt0','mt1','mt2','mt3']
+        }),
+
+        'Google Satellite' : L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+            maxZoom: 15,
+            subdomains:['mt0','mt1','mt2','mt3']
+        }),
+
+    };
+//Adding Thematic Layers (GeoJSON and WMS)
+var thematicLayers = {
+    'cooperatives' : new L.GeoJSON.AJAX("cooperative.geojson", {onEachFeature : onEachFeature})
+};
+
+function onEachFeature(feature, layer) {
+   layer.bindPopup(
+    "<table class='table table-striped table-bordered'>" +
+    "<tbody>" +
+    "<tr><th>Cooperative_code</th> <td>"+layer.feature.properties.field_2+"</td></tr>" +  "<tr><th>Cooperative_Name</th> <td>"+layer.feature.properties.field_3+"</td></tr>" +  "<tr><th>Registration_No</th> <td>"+layer.feature.properties.field_4+"</td></tr>" +  "<tr><th>Registration_date</th> <td>"+layer.feature.properties.field_5+"</td></tr>" +  "<tr><th>Cooperative_Address</th> <td>"+layer.feature.properties.field_6+"</td></tr>" +  "<tr><th>Telephone_N0</th> <td>"+layer.feature.properties.field_7+"</td></tr>" +  "<tr><th>Email_Address</th> <td>"+layer.feature.properties.field_8+"</td></tr>" + "<tr><th>Sub_County</th> <td>"+layer.feature.properties.field_9+"</td></tr>" + "<tr><th>Ward</th> <td>"+layer.feature.properties.field_10+"</td></tr>" + "<tr><th>Village</th> <td>"+layer.feature.properties.field_11+"</td></tr>" + "<tr><th>Coordinates_Longitudes</th> <td>"+layer.feature.properties.field_12+"</td></tr>" + "<tr><th>Coordinates_Latitudes</th> <td>"+layer.feature.properties.field_13+"</td></tr>" + "<tr><th>Contact_Person</th> <td>"+layer.feature.properties.field_14+"</td></tr>" + "<tr><th>Position</th> <td>"+layer.feature.properties.field_15+"</td></tr>" + "<tr><th>Male_Staff</th> <td>"+layer.feature.properties.field_16+"</td></tr>" + "<tr><th>Female_Staff</th> <td>"+layer.feature.properties.field_17+"</td></tr>" +  //copy this and paste this line to add more attributes
+    "</tbody>" +
+    "</table>"
+);
+
+
+}
+
+    //Load the layer control onto the map
+    L.control.layers(basemaps, thematicLayers).addTo(map);
+
+
+    //Choose the layers to be displayed on page load
+    basemaps.OSM.addTo(map);
+    thematicLayers.cooperatives.addTo(map);
+
+    /*Add a legend*/
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function(map){
+        var div = L.DomUtil.create('div', 'legend');
+        div.innerHTML = '<div><b>Legend</b></div>';
+        return div;
+    };
+    legend.addTo(map);
+
+
+</script>
+
+</body>
+</html>
