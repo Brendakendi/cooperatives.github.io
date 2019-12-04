@@ -58,14 +58,14 @@
 	<body>
 		
 	<div>	
-	<header   style="background-image:url(DSC_0155.jpg);" style="width:300px;height:500px;" >
+	<header   style="background-image:url(DSC_0155.JPG);" style="width:300px;height:500px;" >
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t js-fullheight">
 						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<div class="profile-thumb" style="background: url(DSC_0155.jpg);"></div>
+							<div class="profile-thumb" style="background: url(DSC_0155.JPG);"></div>
 							<h1><span>COOPERATIVE DATABASE FOR MERU COUNTY</span></h1>
 							<h3><span>SUPPORTED BY AVSI FOUNDATION</span></h3>
 							<p>
@@ -96,24 +96,24 @@
 			<div class="row">
 				<div class="col-md-4">
 					<h2>MILK COLLECTION</h2>
-					<img src="DSC_0155.jpg"  style="width:350px;height:200px;">
+					<img src="DSC_0155.JPG"  style="width:350px;height:200px;">
 					
 
 				</div>
 				<div class="col-md-4">
 					<h2>COW</h2>
-					<img src="DSC_0461.jpg"  style="width:350px;height:200px;">
+					<img src="DSC_0461.JPG"  style="width:350px;height:200px;">
 				</div>
 			</div>
 			<div class="col-md-4">
 					<h2>MILK COLLECTION</h2>
-					<img src="DSC_0171.jpg"  style="width:350px;height:200px;">
+					<img src="DSC_0171.JPG"  style="width:350px;height:200px;">
 					
 
 				</div>
 				<div class="col-md-4">
 					<h2>COOLER PLANT</h2>
-					<img src="DSC_0342.jpg"  style="width:350px;height:200px;">
+					<img src="DSC_0342.JPG"  style="width:350px;height:200px;">
 					
 
 				</div>
